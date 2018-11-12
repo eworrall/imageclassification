@@ -3,6 +3,7 @@
 Created on Mon Oct 29 01:22:21 2018
 
 @author: elliott
+only works with python 3.5
 """
 
 from keras.models import Sequential
@@ -19,7 +20,7 @@ classifier.add(Dense(units = 128, activation = 'relu'))
 classifier.add(Dense(units = 1, activation = 'sigmoid'))
 
 
-"""
+
 #to train nn:
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
@@ -34,8 +35,9 @@ test_set = test_datagen.flow_from_directory('C:\\Users\\elliott\\Desktop\\Image 
 classifier.fit_generator(training_set, steps_per_epoch = 250, epochs = 30, validation_data = test_set, validation_steps = 63)
 
 
-classifier.save('my_model30.h5')"""
+classifier.save('my_model30.h5')
 
+#to test nn:
 from keras.models import load_model
 classifier = load_model('my_model.h5')
 
@@ -54,5 +56,3 @@ else:
     prediction = 'cat'
 
 print(prediction)
-
-#try rebooting computer
